@@ -58,6 +58,11 @@ var MT = (function (MT, $) {
                     },
                     data = {};
                 data[button.attr('name')] = button.val();
+                if (data.hasOwnProperty('action-delete')) {
+                    if (!confirm('Are you sure you want to delete this item?')) {
+                        return;
+                    }
+                }
                 replace.loadingOverlay();
                 $.ajax(url, {
                     type: method,
